@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/69d1ace254.js" crossorigin="anonymous"></script>
+	<script defer src="./scripts.js"></script>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <h1>Weather</h1>
+            <form class="get-location">
+				
+                <input class="location"  placeholder="What City?" type="text">
+                <div class="wr-submit"><input value=""class="location-button" type="submit"></div>
+				<span class="tooltip">Ex. Manila, PH</span>
+				<span class="lat"></span>
+				<span class="lng"></span>
+			</form>
+			
+        </nav>
+        <div class="weather">
+            <div class="left">
+                <h3 class="temperature">0&deg;C</h3>
+                <h3 class="location currLoc"><span id="City">Name City</span>, <span id="Country">CO</span></h3>
+                <h3 class="condition">weather condition</h3>
+            </div>
+            <div class="right">
+                <img src="" class="fas fa-question-circle"></img>
+            </div>
+        </div>
+        <div class="recommendation">
+            <p>Suggestion on this weather condition.</p>
+        </div>
+
+        <div class="card">
+            <h3>Weather now</h3>
+            <button class="expand"><i class="fas fa-chevron-down"></i></button>
+            <div class="details">
+                <div class="detail">
+                    <i class="fas fa-temperature-high"></i>
+                    <div class="text">
+                        <p class="value" id="tempHL">↑?&deg; ↓?&deg;</p>
+                        <p class="description">Temperature</p>
+                    </div>
+                </div>
+                <div class="detail">
+                    <i class="fas fa-thermometer-three-quarters"></i>
+
+                    <div class="text">
+                        <p class="value" id="feelsLike">?&deg;</p>
+                        <p class="description">Feels like</p>
+                    </div>
+                </div>
+                <div class="detail">
+                    <i class="fas fa-umbrella"></i>
+
+                    <div class="text">
+                        <p class="value" id="chance">?%</p>
+                        <p class="description">Chance</p>
+                    </div>
+                </div>
+                <div class="detail">
+                    <i class="fas fa-wind"></i>
+                    <div class="text">
+                        <p class="value" id="windSpeed">24 km/h</p>
+                        <p class="description">Wind speed</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card week">
+            <h3>This week</h3>
+            <p>7-day forecast</p>
+            <div class="day day0">
+                <img src="" class="conditionIcon"></img>
+                <div class="day-detail">
+                    <div class="date">Zero</div>
+                    <div class="desc">
+                        <i class="fas fa-umbrella"></i>
+                        <p class="chance" >20%</p>
+                        <i class="fas fa-temperature-high"></i>
+                        <p class="tempHL">30&deg; | 23&deg;</p>
+                    </div>
+                </div>
+                <button class="expand">
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+            </div>
+			
+			<div class="day day1">
+                <img src="" class="conditionIcon"></img>
+                <div class="day-detail">
+                    <div class="date">One</div>
+                    <div class="desc">
+                        <i class="fas fa-umbrella"></i>
+                        <p class="chance">20%</p>
+                        <i class="fas fa-temperature-high"></i>
+                        <p class="tempHL">30&deg; | 23&deg;</p>
+                    </div>
+                </div>
+                <button class="expand">
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+            </div>
+			
+			<div class="day day2">
+                <img src="" class="conditionIcon"></img>
+                <div class="day-detail">
+                    <div class="date">Two</div>
+                    <div class="desc">
+                        <i class="fas fa-umbrella"></i>
+                        <p class="chance">20%</p>
+                        <i class="fas fa-temperature-high"></i>
+                        <p class="tempHL">30&deg; | 23&deg;</p>
+                    </div>
+                </div>
+                <button class="expand">
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+            </div>
+			
+			<div class="day day3">
+                <img src="" class="conditionIcon"></img>
+                <div class="day-detail">
+                    <div class="date">Three</div>
+                    <div class="desc">
+                        <i class="fas fa-umbrella"></i>
+                        <p class="chance">20%</p>
+                        <i class="fas fa-temperature-high"></i>
+                        <p class="tempHL">30&deg; | 23&deg;</p>
+                    </div>
+                </div>
+                <button class="expand">
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+            </div>
+			
+			<div class="day day4">
+                <img src="" class="conditionIcon"></img>
+                <div class="day-detail">
+                    <div class="date">Four</div>
+                    <div class="desc">
+                        <i class="fas fa-umbrella"></i>
+                        <p class="chance">20%</p>
+                        <i class="fas fa-temperature-high"></i>
+                        <p class="tempHL">30&deg; | 23&deg;</p>
+                    </div>
+                </div>
+                <button class="expand">
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+            </div>
+			
+			<div class="day day5">
+                <img src="" class="conditionIcon"></img>
+                <div class="day-detail">
+                    <div class="date">Five</div>
+                    <div class="desc">
+                        <i class="fas fa-umbrella"></i>
+                        <p class="chance">20%</p>
+                        <i class="fas fa-temperature-high"></i>
+                        <p class="tempHL">30&deg; | 23&deg;</p>
+                    </div>
+                </div>
+                <button class="expand">
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+            </div>
+			
+			<div class="day day6">
+                <img src="" class="conditionIcon"></img>
+                <div class="day-detail">
+                    <div class="date">Six</div>
+                    <div class="desc">
+                        <i class="fas fa-umbrella"></i>
+                        <p class="chance">20%</p>
+                        <i class="fas fa-temperature-high"></i>
+                        <p class="tempHL">30&deg; | 23&deg;</p>
+                    </div>
+                </div>
+                <button class="expand">
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+            </div>	
+        </div>
+
+    </div>
+</body>
+</html>
