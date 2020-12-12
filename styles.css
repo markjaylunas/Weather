@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
 html {
-  background: #000;
+  background: #f7fbfc;
 }
 * {
   margin: 0;
@@ -23,6 +23,7 @@ input::placeholder {
   width: 360px;
   height: 100%;
   margin: 0 auto;
+  display: none;
 }
 nav {
   display: flex;
@@ -40,7 +41,7 @@ nav {
   position: relative;
 }
 .get-location .location,
-.location-button{
+.location-button,.search-btn {
   border-radius: 10px 0 0 10px;
   border: none;
   padding: 2px 10px;
@@ -50,43 +51,36 @@ nav {
     0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086),
     0 100px 80px rgba(0, 0, 0, 0.12);
 }
-.location-button {
+.search-btn{
   border-radius: 0 10px 10px 0;
   padding: 2px 3px;
   width: 30px;
 }
-.location-button:hover {
+.search-btn:hover {
   background: #f0f5f9;
   cursor: pointer;
 }
-.wr-submit {
-	position: relative;
-	margin-top: 7px;
-}
-.wr-submit:before {
-    content: "\f689";
-    font-family: FontAwesome;
-	position: absolute;
-	margin: 3px 0 0 7px;
-}
-.tooltip{
-	position: absolute;
-	top: 38px;
-	left: 10px;
-	padding: 3px 7px;
-	border-radius: 13px;
-  font-size: .6rem;
+.tooltip {
+  position: absolute;
+  top: 29px;
+  left: 10px;
+  padding: 3px 7px;
+  border-radius: 13px;
+  font-size: 0.6rem;
   background-color: #fff;
   box-shadow: 0 15px 35px rgba(50, 50, 93, 0.1), 0 5px 15px rgba(0, 0, 0, 0.07);
   pointer-events: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   opacity: 0;
   transition: all 0.2s ease-in-out;
 }
-.get-location:hover span{
+.error-message{
+  color: red;
+  font-size: .7em;
+  margin: 0 25px;
+  text-align: center;
+}
+.get-location:hover span {
   opacity: 0.7;
 }
 .weather {
@@ -109,8 +103,6 @@ nav {
   width: 90px;
   background: #d0e8f2;
   border-radius: 20px;
-
-  
 }
 
 .recommendation {
@@ -120,11 +112,7 @@ nav {
 }
 .card {
   /* border: 2px red solid; */
-  display: grid;
 
-  grid-template-areas:
-    "a b"
-    "c c";
   box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
     0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06),
     0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086),
@@ -134,25 +122,35 @@ nav {
   background-color: #fff;
 }
 .card h3 {
+  display: inline-block;
   margin-left: 5%;
-  grid-area: a;
   min-width: 260px;
 }
-.card .expand {
-  grid-area: b;
+.expand-button {
   min-width: 27px;
-  border-radius: 70px;
+  border-radius: 10px;
   margin: 10px;
   border: none;
   background: none;
   font-size: 1.2em;
+  transition: transform 0.6s;
 }
-.card .expand:hover {
-  background: #769fcd49;
+
+.expand-button-active {
+  transform: rotateX(180deg);
+}
+.can-expand:hover {
+  background: #f7f7f7;
   cursor: pointer;
 }
+.expanded {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+.fas span {
+  color: #495464;
+}
 .details {
-  grid-area: c;
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
@@ -185,9 +183,14 @@ nav {
   color: #747e8d;
   font-size: 0.7em;
 }
+.drawer {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.2s;
+}
 .week {
+  padding-top: 10px;
   display: inline-block;
-  
 }
 .week p {
   margin: 0 14px;
@@ -195,17 +198,15 @@ nav {
 }
 .day {
   display: flex;
-  margin: 5px 0;
+  margin-top: 5px;
   padding: 10px;
   justify-content: space-between;
   align-items: center;
 }
+
 .day img {
-  width: 60px;
-}
-.day button {
-  border: none;
-  background: #000;
+  width: 55px;
+  border-radius: 10px;
 }
 .day button i {
   font-size: 1em;
@@ -222,6 +223,7 @@ nav {
 }
 .desc i {
   font-size: 0.9em;
+  color: #495464;
 }
 .desc p {
   color: #495464;
@@ -231,4 +233,42 @@ nav {
 }
 .week p {
   margin-right: 35px;
+}
+.day-drawer {
+  padding-left: 30px;
+}
+.day-drawer p {
+  color: #495464;
+  margin: 0;
+  padding: 0;
+}
+.day-drawer div {
+  margin: 0;
+  padding: 0;
+}
+.day-drawer {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.2s;
+}
+.day:hover{
+  cursor: pointer;
+  background-color: #f3f3f3;
+  border-radius: 10px;
+}
+.expanded-icon{
+  background: #fff;
+  border-radius: 10px;
+  margin-right: 5px;
+}
+.drawer-container{
+  display: flex;
+  flex-wrap: wrap;
+}
+.drawer-container .detail{
+  padding-bottom: 10px;
+}
+.day-drawer .condition{
+  font-size: .9rem;
+  padding: 5px 0;
 }

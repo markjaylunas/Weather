@@ -10,18 +10,18 @@
 </head>
 <body>
     <div class="container">
-        <nav>
+        <nav>   
             <h1>Weather</h1>
             <form class="get-location">
 				
                 <input class="location"  placeholder="What City?" type="text">
-                <div class="wr-submit"><input value=""class="location-button" type="submit"></div>
-				<span class="tooltip">Ex. Manila, PH</span>
-				<span class="lat"></span>
-				<span class="lng"></span>
+                <button class="search-btn"><i class="fas fa-search-location"></i></button>
+                <span class="tooltip">Ex. Manila, PH or Lipa City, PH</span>
 			</form>
-			
         </nav>
+        <div class="message">
+            <span class="error-message">You entered an unknown location. Please try again.</span>
+        </div>
         <div class="weather">
             <div class="left">
                 <h3 class="temperature">0&deg;C</h3>
@@ -33,12 +33,12 @@
             </div>
         </div>
         <div class="recommendation">
-            <p>Suggestion on this weather condition.</p>
+            <p class="conditionSugg"></p>
         </div>
 
-        <div class="card">
+        <div class="card can-expand">
             <h3>Weather now</h3>
-            <button class="expand"><i class="fas fa-chevron-down"></i></button>
+            <button class="expand-button"><i class="fas fa-chevron-down"></i></button>
             <div class="details">
                 <div class="detail">
                     <i class="fas fa-temperature-high"></i>
@@ -71,6 +71,71 @@
                     </div>
                 </div>
             </div>
+			<div class="details drawer">
+				<div class="detail">
+                    <i class="fas fa-glasses"></i>
+                    <div class="text">
+                        <p class="value" id="uvIndex">?</p>
+                        <p class="description">UV Index</p>
+                    </div>
+                </div>
+                <div class="detail">
+                    <i class="fas fa-cloud"></i>
+
+                    <div class="text">
+                        <p class="value" id="cloudCover">? %</p>
+                        <p class="description">Cloud cover</p>
+                    </div>
+                </div>
+				<div class="detail">
+                    <i class="fas fa-tachometer-alt"></i>
+
+                    <div class="text">
+                        <p class="value" id="pressure">? hPa</p>
+                        <p class="description">Pressure</p>
+                    </div>
+                </div>
+				<div class="detail">
+                    <i class="fas fa-tint"></i>
+
+                    <div class="text">
+                        <p class="value" id="humidity">? %</p>
+                        <p class="description">Humidity</p>
+                    </div>
+                </div>
+				<div class="detail">
+                    <i class="fas fa-tint"><span>°</span></i>
+
+                    <div class="text">
+                        <p class="value" id="dewPoint">?°</p>
+                        <p class="description">Dew Point</p>
+                    </div>
+                </div>
+				<div class="detail">
+                    <i class="fas fa-eye"></i>
+
+                    <div class="text">
+                        <p class="value" id="visibility">? km</p>
+                        <p class="description">Visibility</p>
+                    </div>
+                </div>
+				<div class="detail">
+                    <i class="far fa-sun">↑</i>
+
+                    <div class="text">
+                        <p class="value" id="sunrise">00:00</p>
+                        <p class="description">Sunrise</p>
+                    </div>
+                </div>
+				<div class="detail">
+                    <i class="fas fa-sun">↓</i>
+
+                    <div class="text">
+                        <p class="value" id="sunset">00:00</p>
+                        <p class="description">Sunset</p>
+                    </div>
+                </div>
+			</div>
         </div>
 
         <div class="card week">
@@ -79,114 +144,471 @@
             <div class="day day0">
                 <img src="" class="conditionIcon"></img>
                 <div class="day-detail">
-                    <div class="date">Zero</div>
+                    <div class="date"></div>
                     <div class="desc">
                         <i class="fas fa-umbrella"></i>
-                        <p class="chance" >20%</p>
+                        <p class="chance" ></p>
                         <i class="fas fa-temperature-high"></i>
-                        <p class="tempHL">30&deg; | 23&deg;</p>
+                        <p class="tempHL"></p>
                     </div>
                 </div>
-                <button class="expand">
+                <button class="expand-button">
                     <i class="fas fa-chevron-down"></i>
                 </button>
             </div>
+			<div class="day-drawer day0">
+                <p class="condition">Condition</p>
+                <div class="drawer-container">
+                    <div class="detail">
+                        <i class="fas fa-thermometer-three-quarters"></i>
+
+                        <div class="text">
+                            <p class="value" id="feelsLike">?&deg;</p>
+                            <p class="description">Feels like</p>
+                        </div>
+                    </div>
+                    <div class="detail">
+                        <i class="fas fa-wind"></i>
+                        <div class="text">
+                            <p class="value" id="windSpeed">24 km/h</p>
+                            <p class="description">Wind speed</p>
+                        </div>
+                    </div>
+                    <div class="detail">
+                        <i class="fas fa-glasses"></i>
+                        <div class="text">
+                            <p class="value" id="uvIndex">?</p>
+                            <p class="description">UV Index</p>
+                        </div>
+                    </div>
+                    <div class="detail">
+                        <i class="fas fa-cloud"></i>
+
+                        <div class="text">
+                            <p class="value" id="cloudCover">? %</p>
+                            <p class="description">Cloud cover</p>
+                        </div>
+                    </div>
+                    <div class="detail">
+                        <i class="far fa-sun">↑</i>
+
+                        <div class="text">
+                            <p class="value" id="sunrise">00:00</p>
+                            <p class="description">Sunrise</p>
+                        </div>
+                    </div>
+                    <div class="detail">
+                        <i class="fas fa-sun">↓</i>
+
+                        <div class="text">
+                            <p class="value" id="sunset">00:00</p>
+                            <p class="description">Sunset</p>
+                        </div>
+                    </div>
+                </div>
+			</div>
 			
 			<div class="day day1">
                 <img src="" class="conditionIcon"></img>
                 <div class="day-detail">
-                    <div class="date">One</div>
+                    <div class="date"></div>
                     <div class="desc">
                         <i class="fas fa-umbrella"></i>
-                        <p class="chance">20%</p>
+                        <p class="chance"></p>
                         <i class="fas fa-temperature-high"></i>
-                        <p class="tempHL">30&deg; | 23&deg;</p>
+                        <p class="tempHL"></p>
                     </div>
                 </div>
-                <button class="expand">
+                <button class="expand-button">
                     <i class="fas fa-chevron-down"></i>
                 </button>
             </div>
+            <div class="day-drawer day1">
+                <p class="condition">Condition</p>
+                <div class="drawer-container">
+                    <div class="detail">
+                        <i class="fas fa-thermometer-three-quarters"></i>
+
+                        <div class="text">
+                            <p class="value" id="feelsLike">?&deg;</p>
+                            <p class="description">Feels like</p>
+                        </div>
+                    </div>
+                    <div class="detail">
+                        <i class="fas fa-wind"></i>
+                        <div class="text">
+                            <p class="value" id="windSpeed">24 km/h</p>
+                            <p class="description">Wind speed</p>
+                        </div>
+                    </div>
+                    <div class="detail">
+                        <i class="fas fa-glasses"></i>
+                        <div class="text">
+                            <p class="value" id="uvIndex">?</p>
+                            <p class="description">UV Index</p>
+                        </div>
+                    </div>
+                    <div class="detail">
+                        <i class="fas fa-cloud"></i>
+
+                        <div class="text">
+                            <p class="value" id="cloudCover">? %</p>
+                            <p class="description">Cloud cover</p>
+                        </div>
+                    </div>
+                    <div class="detail">
+                        <i class="far fa-sun">↑</i>
+
+                        <div class="text">
+                            <p class="value" id="sunrise">00:00</p>
+                            <p class="description">Sunrise</p>
+                        </div>
+                    </div>
+                    <div class="detail">
+                        <i class="fas fa-sun">↓</i>
+
+                        <div class="text">
+                            <p class="value" id="sunset">00:00</p>
+                            <p class="description">Sunset</p>
+                        </div>
+                    </div>
+                </div>
+			</div>
 			
 			<div class="day day2">
                 <img src="" class="conditionIcon"></img>
                 <div class="day-detail">
-                    <div class="date">Two</div>
+                    <div class="date"></div>
                     <div class="desc">
                         <i class="fas fa-umbrella"></i>
-                        <p class="chance">20%</p>
+                        <p class="chance"></p>
                         <i class="fas fa-temperature-high"></i>
-                        <p class="tempHL">30&deg; | 23&deg;</p>
+                        <p class="tempHL"></p>
                     </div>
                 </div>
-                <button class="expand">
+                <button class="expand-button">
                     <i class="fas fa-chevron-down"></i>
                 </button>
             </div>
+            <div class="day-drawer day2">
+                <p class="condition">Condition</p>
+                <div class="drawer-container">
+                    <div class="detail">
+                        <i class="fas fa-thermometer-three-quarters"></i>
+
+                        <div class="text">
+                            <p class="value" id="feelsLike">?&deg;</p>
+                            <p class="description">Feels like</p>
+                        </div>
+                    </div>
+                    <div class="detail">
+                        <i class="fas fa-wind"></i>
+                        <div class="text">
+                            <p class="value" id="windSpeed">24 km/h</p>
+                            <p class="description">Wind speed</p>
+                        </div>
+                    </div>
+                    <div class="detail">
+                        <i class="fas fa-glasses"></i>
+                        <div class="text">
+                            <p class="value" id="uvIndex">?</p>
+                            <p class="description">UV Index</p>
+                        </div>
+                    </div>
+                    <div class="detail">
+                        <i class="fas fa-cloud"></i>
+
+                        <div class="text">
+                            <p class="value" id="cloudCover">? %</p>
+                            <p class="description">Cloud cover</p>
+                        </div>
+                    </div>
+                    <div class="detail">
+                        <i class="far fa-sun">↑</i>
+
+                        <div class="text">
+                            <p class="value" id="sunrise">00:00</p>
+                            <p class="description">Sunrise</p>
+                        </div>
+                    </div>
+                    <div class="detail">
+                        <i class="fas fa-sun">↓</i>
+
+                        <div class="text">
+                            <p class="value" id="sunset">00:00</p>
+                            <p class="description">Sunset</p>
+                        </div>
+                    </div>
+                </div>
+			</div>
 			
 			<div class="day day3">
                 <img src="" class="conditionIcon"></img>
                 <div class="day-detail">
-                    <div class="date">Three</div>
+                    <div class="date"></div>
                     <div class="desc">
                         <i class="fas fa-umbrella"></i>
-                        <p class="chance">20%</p>
+                        <p class="chance"></p>
                         <i class="fas fa-temperature-high"></i>
-                        <p class="tempHL">30&deg; | 23&deg;</p>
+                        <p class="tempHL"></p>
                     </div>
                 </div>
-                <button class="expand">
+                <button class="expand-button">
                     <i class="fas fa-chevron-down"></i>
                 </button>
             </div>
+            <div class="day-drawer day3">
+                <p class="condition">Condition</p>
+                <div class="drawer-container">
+                    <div class="detail">
+                        <i class="fas fa-thermometer-three-quarters"></i>
+
+                        <div class="text">
+                            <p class="value" id="feelsLike">?&deg;</p>
+                            <p class="description">Feels like</p>
+                        </div>
+                    </div>
+                    <div class="detail">
+                        <i class="fas fa-wind"></i>
+                        <div class="text">
+                            <p class="value" id="windSpeed">24 km/h</p>
+                            <p class="description">Wind speed</p>
+                        </div>
+                    </div>
+                    <div class="detail">
+                        <i class="fas fa-glasses"></i>
+                        <div class="text">
+                            <p class="value" id="uvIndex">?</p>
+                            <p class="description">UV Index</p>
+                        </div>
+                    </div>
+                    <div class="detail">
+                        <i class="fas fa-cloud"></i>
+
+                        <div class="text">
+                            <p class="value" id="cloudCover">? %</p>
+                            <p class="description">Cloud cover</p>
+                        </div>
+                    </div>
+                    <div class="detail">
+                        <i class="far fa-sun">↑</i>
+
+                        <div class="text">
+                            <p class="value" id="sunrise">00:00</p>
+                            <p class="description">Sunrise</p>
+                        </div>
+                    </div>
+                    <div class="detail">
+                        <i class="fas fa-sun">↓</i>
+
+                        <div class="text">
+                            <p class="value" id="sunset">00:00</p>
+                            <p class="description">Sunset</p>
+                        </div>
+                    </div>
+                </div>
+			</div>
 			
 			<div class="day day4">
                 <img src="" class="conditionIcon"></img>
                 <div class="day-detail">
-                    <div class="date">Four</div>
+                    <div class="date"></div>
                     <div class="desc">
                         <i class="fas fa-umbrella"></i>
-                        <p class="chance">20%</p>
+                        <p class="chance"></p>
                         <i class="fas fa-temperature-high"></i>
-                        <p class="tempHL">30&deg; | 23&deg;</p>
+                        <p class="tempHL"></p>
                     </div>
                 </div>
-                <button class="expand">
+                <button class="expand-button">
                     <i class="fas fa-chevron-down"></i>
                 </button>
             </div>
+            <div class="day-drawer day4">
+                <p class="condition">Condition</p>
+                <div class="drawer-container">
+                    <div class="detail">
+                        <i class="fas fa-thermometer-three-quarters"></i>
+
+                        <div class="text">
+                            <p class="value" id="feelsLike">?&deg;</p>
+                            <p class="description">Feels like</p>
+                        </div>
+                    </div>
+                    <div class="detail">
+                        <i class="fas fa-wind"></i>
+                        <div class="text">
+                            <p class="value" id="windSpeed">24 km/h</p>
+                            <p class="description">Wind speed</p>
+                        </div>
+                    </div>
+                    <div class="detail">
+                        <i class="fas fa-glasses"></i>
+                        <div class="text">
+                            <p class="value" id="uvIndex">?</p>
+                            <p class="description">UV Index</p>
+                        </div>
+                    </div>
+                    <div class="detail">
+                        <i class="fas fa-cloud"></i>
+
+                        <div class="text">
+                            <p class="value" id="cloudCover">? %</p>
+                            <p class="description">Cloud cover</p>
+                        </div>
+                    </div>
+                    <div class="detail">
+                        <i class="far fa-sun">↑</i>
+
+                        <div class="text">
+                            <p class="value" id="sunrise">00:00</p>
+                            <p class="description">Sunrise</p>
+                        </div>
+                    </div>
+                    <div class="detail">
+                        <i class="fas fa-sun">↓</i>
+
+                        <div class="text">
+                            <p class="value" id="sunset">00:00</p>
+                            <p class="description">Sunset</p>
+                        </div>
+                    </div>
+                </div>
+			</div>
 			
 			<div class="day day5">
                 <img src="" class="conditionIcon"></img>
                 <div class="day-detail">
-                    <div class="date">Five</div>
+                    <div class="date"></div>
                     <div class="desc">
                         <i class="fas fa-umbrella"></i>
-                        <p class="chance">20%</p>
+                        <p class="chance"></p>
                         <i class="fas fa-temperature-high"></i>
-                        <p class="tempHL">30&deg; | 23&deg;</p>
+                        <p class="tempHL"></p>
                     </div>
                 </div>
-                <button class="expand">
+                <button class="expand-button">
                     <i class="fas fa-chevron-down"></i>
                 </button>
             </div>
+            <div class="day-drawer day5">
+                <p class="condition">Condition</p>
+                <div class="drawer-container">
+                    <div class="detail">
+                        <i class="fas fa-thermometer-three-quarters"></i>
+
+                        <div class="text">
+                            <p class="value" id="feelsLike">?&deg;</p>
+                            <p class="description">Feels like</p>
+                        </div>
+                    </div>
+                    <div class="detail">
+                        <i class="fas fa-wind"></i>
+                        <div class="text">
+                            <p class="value" id="windSpeed">24 km/h</p>
+                            <p class="description">Wind speed</p>
+                        </div>
+                    </div>
+                    <div class="detail">
+                        <i class="fas fa-glasses"></i>
+                        <div class="text">
+                            <p class="value" id="uvIndex">?</p>
+                            <p class="description">UV Index</p>
+                        </div>
+                    </div>
+                    <div class="detail">
+                        <i class="fas fa-cloud"></i>
+
+                        <div class="text">
+                            <p class="value" id="cloudCover">? %</p>
+                            <p class="description">Cloud cover</p>
+                        </div>
+                    </div>
+                    <div class="detail">
+                        <i class="far fa-sun">↑</i>
+
+                        <div class="text">
+                            <p class="value" id="sunrise">00:00</p>
+                            <p class="description">Sunrise</p>
+                        </div>
+                    </div>
+                    <div class="detail">
+                        <i class="fas fa-sun">↓</i>
+
+                        <div class="text">
+                            <p class="value" id="sunset">00:00</p>
+                            <p class="description">Sunset</p>
+                        </div>
+                    </div>
+                </div>
+			</div>
 			
 			<div class="day day6">
                 <img src="" class="conditionIcon"></img>
                 <div class="day-detail">
-                    <div class="date">Six</div>
+                    <div class="date"></div>
                     <div class="desc">
                         <i class="fas fa-umbrella"></i>
-                        <p class="chance">20%</p>
+                        <p class="chance"></p>
                         <i class="fas fa-temperature-high"></i>
-                        <p class="tempHL">30&deg; | 23&deg;</p>
+                        <p class="tempHL"></p>
                     </div>
                 </div>
-                <button class="expand">
+                <button class="expand-button">
                     <i class="fas fa-chevron-down"></i>
                 </button>
-            </div>	
+            </div>
+            <div class="day-drawer day6">
+                <p class="condition">Condition</p>
+                <div class="drawer-container">
+                    <div class="detail">
+                        <i class="fas fa-thermometer-three-quarters"></i>
+
+                        <div class="text">
+                            <p class="value" id="feelsLike">?&deg;</p>
+                            <p class="description">Feels like</p>
+                        </div>
+                    </div>
+                    <div class="detail">
+                        <i class="fas fa-wind"></i>
+                        <div class="text">
+                            <p class="value" id="windSpeed">24 km/h</p>
+                            <p class="description">Wind speed</p>
+                        </div>
+                    </div>
+                    <div class="detail">
+                        <i class="fas fa-glasses"></i>
+                        <div class="text">
+                            <p class="value" id="uvIndex">?</p>
+                            <p class="description">UV Index</p>
+                        </div>
+                    </div>
+                    <div class="detail">
+                        <i class="fas fa-cloud"></i>
+
+                        <div class="text">
+                            <p class="value" id="cloudCover">? %</p>
+                            <p class="description">Cloud cover</p>
+                        </div>
+                    </div>
+                    <div class="detail">
+                        <i class="far fa-sun">↑</i>
+
+                        <div class="text">
+                            <p class="value" id="sunrise">00:00</p>
+                            <p class="description">Sunrise</p>
+                        </div>
+                    </div>
+                    <div class="detail">
+                        <i class="fas fa-sun">↓</i>
+
+                        <div class="text">
+                            <p class="value" id="sunset">00:00</p>
+                            <p class="description">Sunset</p>
+                        </div>
+                    </div>
+                </div>
+			</div>	
         </div>
 
     </div>
