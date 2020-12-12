@@ -23,7 +23,7 @@ input::placeholder {
   width: 360px;
   height: 100%;
   margin: 0 auto;
-  display: none;
+  //display: none;
 }
 nav {
   display: flex;
